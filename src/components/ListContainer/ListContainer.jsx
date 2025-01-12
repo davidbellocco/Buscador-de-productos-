@@ -3,12 +3,15 @@ import useApi from "../../hooks/useApi";
 import ListMap from "../ListMap/ListMap";
 
 
+
 function ListContainer(){
 
     const {item,searchresults,cargando} =useApi();
     const [query,setQuery] =useState("")
     const [searched , setSearched] = useState(false)
+
   
+   const primeros =item.slice(0,10)
    
    
     // manejar el formulario con 
@@ -21,7 +24,6 @@ function ListContainer(){
         }
 
     }
-    
 
     return(
         <>
@@ -44,7 +46,7 @@ function ListContainer(){
             
             {cargando && searched && cargando ? (
                 <p className="text-center text-gray-600 font-bold">cargando productos...</p>):
-                    <ListMap products_filter={item} />
+                    <ListMap products_filter={primeros} />
                     
                     
                 }
